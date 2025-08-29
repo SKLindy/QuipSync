@@ -107,6 +107,20 @@ Respond with JSON:
 }`;
 
       // Call server for Anthropic (B)
+const resp = await fetch('/api/complete-json', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ mode: 'script', prompt: comprehensivePrompt })
+});
+if (!resp.ok) {
+  const text = await resp.text();
+  throw new Error(`API ${resp.status}: ${text.slice(0, 200)}`);
+}
+const { data } = await resp.json();
+
+setStoryDetails(data.storyDetails);
+setSongAnalysis(data.songAnalysis);
+setScripts(data.scripts);
       const resp = await fetch('/api/complete-json', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
