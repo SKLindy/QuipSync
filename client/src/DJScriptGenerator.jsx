@@ -306,7 +306,7 @@ Return ONLY strict JSON in this format:
       const resp = await fetch('/api/complete-json', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: comprehensivePrompt }),
+        body: JSON.stringify({ mode: 'style',  prompt: personalStylePrompt }),
       });
       const { completion, error } = await resp.json();
       if (error) throw new Error(error);
