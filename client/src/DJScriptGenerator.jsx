@@ -110,7 +110,7 @@ Respond with JSON:
       const resp = await fetch('/api/complete-json', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: personalStylePrompt }),
+        body: JSON.stringify({ 'script', prompt: comprehensivePrompt }),
       });
       const { completion } = await resp.json();
       const clean = String(completion || '').trim().replace(/^```json\s*/i, '').replace(/\s*```$/,'');
