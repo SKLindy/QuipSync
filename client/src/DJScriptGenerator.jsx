@@ -121,12 +121,6 @@ const { data } = await resp.json();
 setStoryDetails(data.storyDetails);
 setSongAnalysis(data.songAnalysis);
 setScripts(data.scripts);
-      const resp = await fetch('/api/complete-json', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 'script', prompt: comprehensivePrompt }),
-      });
-      const { completion } = await resp.json();
       const clean = String(completion || '').trim().replace(/^```json\s*/i, '').replace(/\s*```$/,'');
       const styleData = JSON.parse(clean);
 
